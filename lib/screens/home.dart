@@ -26,21 +26,25 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: AppBar(
-
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
       body: ListView(
         physics: BouncingScrollPhysics(),
         children: <Widget>[
-          Container(color: Colors.redAccent, height: 70,),
-          Container(color: Colors.orange, height: 70,),
-          Container(color: Colors.yellow, height: 70,),
-          Container(color: Colors.green, height: 70,),
-          Container(color: Colors.blue, height: 70,),
-          Container(color: Colors.indigo, height: 70,),
-          Container(color: Colors.purpleAccent, height: 70,),
+          Row(children: [
+            Padding(
+                padding: EdgeInsets.only(left:20, top:20, bottom: 20),
+                child: Text('메모메모', style: TextStyle(fontSize: 36,
+                color: Colors.blue)) //TextStyle, Text
+            )
+          ],
+          ),
+          ...LoadMemo()
+          // Container(color: Colors.redAccent, height: 70,),
+          // Container(color: Colors.orange, height: 70,),
+          // Container(color: Colors.yellow, height: 70,),
+          // Container(color: Colors.green, height: 70,),
+          // Container(color: Colors.blue, height: 70,),
+          // Container(color: Colors.indigo, height: 70,),
+          // Container(color: Colors.purpleAccent, height: 70,),
         ]
       ),
       floatingActionButton: FloatingActionButton.extended(
@@ -56,5 +60,12 @@ class _MyHomePageState extends State<MyHomePage> {
         icon: const Icon(Icons.add),
       ),
     );
+  }
+
+  List<Widget> LoadMemo() {
+    List<Widget> memoList = [];
+    memoList.add(Container(color: Colors.purpleAccent, height: 100,));
+    memoList.add(Container(color: Colors.red, height: 100,));
+    return memoList;
   }
 }
