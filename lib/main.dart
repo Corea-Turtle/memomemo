@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         //primarySwatch: Colors.deepOrange, primaryColor: Colors.white,
         colorScheme: .fromSeed(
-          seedColor: Colors.deepOrange,
+          seedColor: Colors.blueAccent,
           surface: Colors.white
         ),
       ),

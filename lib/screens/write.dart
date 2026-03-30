@@ -1,15 +1,26 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:crypto/crypto.dart';
+import 'package:memomemo/screens/home.dart';
 import '../database/db.dart';
 import '../database/memo.dart';
 
+class WritePage extends StatefulWidget {
+  const WritePage({super.key});
 
-class EditPage extends StatelessWidget {
-  //const EditPage({super.key});
+  @override
+  State<WritePage> createState() => _WritePageState();
+}
+
+class _WritePageState extends State<WritePage> {
+  late BuildContext _context;
+
   String title = '';
   String text = '';
+  String createTime = '';
+
   @override
+
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -17,11 +28,19 @@ class EditPage extends StatelessWidget {
         actions: <Widget>[
          IconButton(
            icon: const Icon(Icons.delete),
-           onPressed: () {},
+           onPressed: () {
+
+           },
 
          ), IconButton(
             icon: const Icon(Icons.save),
-            onPressed: saveDB,
+            onPressed:(){
+              saveDB();
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MyHomePage(title: '메모메모ㄴㅇ')),
+              );
+            }
 
           ),
         ],

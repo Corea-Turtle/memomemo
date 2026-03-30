@@ -52,7 +52,6 @@ class DBHelper {
     });
   }
 
-
   Future<void> updateMemo(Memo memo) async {
     final db = await database;
 
@@ -66,7 +65,7 @@ class DBHelper {
     );
   }
 
-  Future<void> deleteMemo(int id) async {
+  Future<void> deleteMemo(String id) async {
     // Get a reference to the database.
     final db = await database;
 
@@ -78,5 +77,21 @@ class DBHelper {
       // Pass the Dog's id as a whereArg to prevent SQL injection.
       whereArgs: [id],
     );
+  }
+
+  Future<List<Memo>> findMemo(String id) async {
+    final db = await database;
+
+    final List<Map<String, dynamic>> maps = await db.query('memos', where: 'id = ?', whereArgs: [id]);
+
+    return List.generate(maps.length, (i) {
+      return Memo(
+        id: maps[i]['id'],
+        title: maps[i]['title'],
+        text: maps[i]['text'],
+        createTime: maps[i]['createTime'],
+        editTime: maps[i]['editTime'],
+      );
+    });
   }
 }
